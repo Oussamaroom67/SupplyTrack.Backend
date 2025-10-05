@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Aggregates\" />
+    <Folder Include="DomainServices\" />
+    <Folder Include="Entities\Common\" />
+    <Folder Include="Entities\Inventory\" />
+    <Folder Include="Entities\Identity\" />
+    <Folder Include="Entities\Production\" />
+    <Folder Include="Entities\Quality\" />
+    <Folder Include="Entities\Procurement\" />
+    <Folder Include="Events\Identity\" />
+    <Folder Include="Events\Inventory\" />
+    <Folder Include="Events\Procurement\" />
+    <Folder Include="Events\Production\" />
+    <Folder Include="Events\Quality\" />
+    <Folder Include="Interfaces\External\" />
+    <Folder Include="Interfaces\Services\" />
+    <Folder Include="Interfaces\Repositories\" />
+    <Folder Include="ValueObjects\" />
+  </ItemGroup>
+
+</Project>
+

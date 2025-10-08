@@ -17,4 +17,8 @@
     <Folder Include="Mappings\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SupplyTrack.Backend.Application\SupplyTrack.Backend.Application.csproj" />
+  </ItemGroup>
+
 </Project>

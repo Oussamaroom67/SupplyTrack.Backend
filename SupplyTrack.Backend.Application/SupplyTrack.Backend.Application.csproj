@@ -15,4 +15,8 @@
     <Folder Include="UseCases\Quality\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SupplyTrack.Backend.Domain\SupplyTrack.Backend.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

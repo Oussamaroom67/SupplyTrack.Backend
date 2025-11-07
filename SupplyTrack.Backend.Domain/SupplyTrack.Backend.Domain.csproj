@@ -7,8 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DomainServices\" />
+    <Folder Include="DomainServices\Company\" />
     <Folder Include="Entities\Common\" />
+    <Folder Include="Entities\Company\" />
     <Folder Include="Enums\Inventory\" />
     <Folder Include="Enums\Identity\" />
     <Folder Include="Enums\Production\" />
@@ -19,8 +20,10 @@
     <Folder Include="Events\Production\" />
     <Folder Include="Events\Quality\" />
     <Folder Include="Interfaces\External\" />
-    <Folder Include="Interfaces\Services\" />
-    <Folder Include="Interfaces\Repositories\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SupplyTrack.Backend.Shared\SupplyTrack.Backend.Shared.csproj" />
   </ItemGroup>
 
 </Project>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SupplyTrack.Backend.Domain.ValueObjects
 {
-    internal class ContactInfo
+    public class ContactInfo
     {
         string Email { get; set; }
         string PhoneNumber { get; set; }

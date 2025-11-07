@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace SupplyTrack.Backend.Domain.Enums.Procurement
 {
-    public enum PurchaseOrderStatus
+    public enum OrderMode
     {
-        Draft,
-        Validated,
-        Received, // livraison partielle
-        Closed, // livraison totale
-        Canceled
+        Manual,
+        Automatic
     }
 }

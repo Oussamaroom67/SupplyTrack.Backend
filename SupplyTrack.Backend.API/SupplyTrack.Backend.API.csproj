@@ -11,10 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DTOs\Responses\" />
-    <Folder Include="DTOs\Requests\" />
     <Folder Include="Middlewares\" />
-    <Folder Include="Mappings\" />
   </ItemGroup>
 
   <ItemGroup>

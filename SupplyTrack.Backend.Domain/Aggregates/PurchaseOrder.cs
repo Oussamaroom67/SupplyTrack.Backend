@@ -1,15 +1,18 @@
 ﻿using SupplyTrack.Backend.Domain.Enums.Procurement;
 using SupplyTrack.Backend.Domain.Entities.Procurement;
+using SupplyTrack.Backend.Domain.Events.Procurement;
 
 namespace SupplyTrack.Backend.Domain.Aggregates
 {
-    public class PurchaseOrder
+    public class PurchaseOrder : AggregateRoot
     {
         #region Properties
         public int Id { get; private set; }
         public int SupplierId { get; private set; }
         public DateTime OrderDate { get; private set; }
         public DateTime? ExpectedDeliveryDate { get; private set; }
+        public DateTime? DeliveryDate  { get; private set; }
+        public DateTime? CompletedAt { get; private set; }
         public PurchaseOrderStatus Status { get; private set; }
         public int CompanyId { get; private set; }
 
@@ -59,6 +62,10 @@ namespace SupplyTrack.Backend.Domain.Aggregates
             ExpectedDeliveryDate = expectedDeliveryDate;
             Status = PurchaseOrderStatus.Draft;
             CompanyId = companyId;
+            DeliveryDate  = null;
+            CompletedAt = null;
+            // EVENT
+            AddDomainEvent(new PurchaseOrderInitializedEvent(this.Id, this.SupplierId));
         }
 
         /// <summary>
@@ -120,6 +127,7 @@ namespace SupplyTrack.Backend.Domain.Aggregates
             }
 
             Status = PurchaseOrderStatus.Validated;
+            AddDomainEvent(new PurchaseOrderValidatedEvent(this.Id, this.SupplierId));
         }
 
         /// <summary>
@@ -139,12 +147,13 @@ namespace SupplyTrack.Backend.Domain.Aggregates
             }
 
             Status = PurchaseOrderStatus.Canceled;
+            AddDomainEvent(new PurchaseOrderCanceledEvent(this.Id, this.SupplierId));
         }
 
         /// <summary>
         /// Enregistre une livraison partielle
         /// </summary>
-        public void ReceivePartialDelivery(int lineId, int quantityReceived)
+        public void ReceivePartialDelivery(int lineId, int quantityReceived,DateTime deliveryDate )
         {
             if (Status != PurchaseOrderStatus.Validated)
             {
@@ -170,11 +179,15 @@ namespace SupplyTrack.Backend.Domain.Aggregates
             }
 
             line.UpdateQuantityReceived(quantityReceived);
+            this.DeliveryDate  = deliveryDate ;
+            AddDomainEvent(new PurchaseOrderLineReceivedEvent(Id, lineId, line.QuantityReceived, DeliveryDate ));
 
             // Vérifier si toutes les lignes sont complètement reçues
-            if (IsFullyReceived(lineId))
+            if (IsFullyReceived())
             {
+                CompletedAt = DeliveryDate ;
                 Status = PurchaseOrderStatus.Closed;
+                AddDomainEvent(new PurchaseOrderFullyReceivedEvent(this.Id,this.SupplierId,this.TotalAmount,this.CompletedAt));
             }
         }
 

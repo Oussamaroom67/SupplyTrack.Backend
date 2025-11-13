@@ -1,11 +1,12 @@
-﻿using SupplyTrack.Backend.Domain.ValueObjects;
+﻿using SupplyTrack.Backend.Domain.Entities.Procurement;
+using SupplyTrack.Backend.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SupplyTrack.Backend.Domain.Entities.Procurement
+namespace SupplyTrack.Backend.Domain.Aggregates
 {
-    internal class Supplier
+    public class Supplier
     {
         #region Properties
         public int Id { get; private set; }

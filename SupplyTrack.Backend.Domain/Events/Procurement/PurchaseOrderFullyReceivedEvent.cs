@@ -7,18 +7,11 @@ using System.Threading.Tasks;
 
 namespace SupplyTrack.Backend.Domain.Events.Procurement
 {
-    internal class PurchaseOrderFullyReceivedEvent : IDomainEvent
+    internal class PurchaseOrderFullyReceivedEvent(int purchaseOrderId, int supplierId, decimal totalAmount, DateTime? completedAt) : IDomainEvent
     {
-        public int PurchaseOrderId { get; }
-        public int SupplierId { get; }
-        public decimal TotalAmount { get; }
-        public DateTime? CompletedAt { get; }
-        public PurchaseOrderFullyReceivedEvent(int purchaseOrderId, int supplierId, decimal totalAmount, DateTime? completedAt)
-        {
-            PurchaseOrderId = purchaseOrderId;
-            SupplierId = supplierId;
-            TotalAmount = totalAmount;
-            CompletedAt = completedAt;
-        }
+        public int PurchaseOrderId { get; } = purchaseOrderId;
+        public int SupplierId { get; } = supplierId;
+        public decimal TotalAmount { get; } = totalAmount;
+        public DateTime? CompletedAt { get; } = completedAt;
     }
 }

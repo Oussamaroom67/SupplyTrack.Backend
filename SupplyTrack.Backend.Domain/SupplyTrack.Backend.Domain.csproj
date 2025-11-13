@@ -16,7 +16,6 @@
     <Folder Include="Enums\Quality\" />
     <Folder Include="Events\Identity\" />
     <Folder Include="Events\Inventory\" />
-    <Folder Include="Events\Procurement\" />
     <Folder Include="Events\Production\" />
     <Folder Include="Events\Quality\" />
     <Folder Include="Interfaces\External\" />

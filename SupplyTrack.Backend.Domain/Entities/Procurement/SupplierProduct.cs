@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SupplyTrack.Backend.Domain.Entities.Procurement
 {
-    internal class SupplierProduct
+    public class SupplierProduct
     {
         #region properties
         public int Id { get; private set; }

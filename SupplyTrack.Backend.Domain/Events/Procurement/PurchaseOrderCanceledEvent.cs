@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SupplyTrack.Backend.Domain.DomainServices.Procurement
+namespace SupplyTrack.Backend.Domain.Events.Procurement
 {
-    internal class PurchaseReceptionService
+    internal class PurchaseOrderCancelledEvent
     {
     }
 }
